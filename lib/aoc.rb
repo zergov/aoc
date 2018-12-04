@@ -1,3 +1,3 @@
 def aoc
-  puts "oh oh oh!"
+  "oh oh oh!"
 end
