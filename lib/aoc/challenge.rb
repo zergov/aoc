@@ -18,7 +18,7 @@ module Aoc
 
     def part2
       if content.css('article.day-desc').count > 1
-        @part2 ||= content.css('article.day-desc')[1].text
+        @part2 ||= content.css('article.day-desc').last.text
       else
         "Part 2 not unlocked yet"
       end
