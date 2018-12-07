@@ -1,21 +1,30 @@
 #!/usr/bin/env ruby
 
-require "thor"
+require 'aoc'
+require 'thor'
 require 'date'
-require 'net/http'
 
 class CLI < Thor
-  desc "fetch", "Fetch challenge of the day"
-  def fetch
+  desc "fetch [day] [year]", "fetch and display a challenge description."
+  method_option :input, :aliases => "-i", :type => :boolean, :default => false, :desc => "only show the input of the challenge."
+  def fetch(day, year)
+    challenge = Aoc::Challenge.new(day, year)
 
-    # puts "Enter your session key:"
-    # session_key = STDIN.gets.chomp
-    # puts
-
-    today = Date.today
-    puts "Fetching: day #{today.day}, #{today.year}"
-
-    content = Net::HTTP.get(URI("https://adventofcode.com/#{today.year}/day/#{today.day}"))
+    unless options[:input]
+      begin
+        puts "Fetching: day #{day}, #{year}"
+        puts challenge.part1
+        puts challenge.part2
+      rescue OpenURI::HTTPError
+        puts "Cannot find this challenge, make sure it exists."
+      end
+    else
+      begin
+        puts challenge.input
+      rescue OpenURI::HTTPError
+        puts "Cannot find the input for your challenge. Make sure your session key is valid."
+      end
+    end
   end
 end
 
