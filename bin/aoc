@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require "thor"
+
+class CLI < Thor
+  desc "fetch", "Fetch challenge of the day"
+  def fetch
+    puts "Enter your session key:"
+    session_key = STDIN.gets.chomp
+    puts
+    puts "Your session key is: #{session_key}"
+  end
+end
+
+CLI.start
