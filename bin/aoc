@@ -1,14 +1,21 @@
 #!/usr/bin/env ruby
 
 require "thor"
+require 'date'
+require 'net/http'
 
 class CLI < Thor
   desc "fetch", "Fetch challenge of the day"
   def fetch
-    puts "Enter your session key:"
-    session_key = STDIN.gets.chomp
-    puts
-    puts "Your session key is: #{session_key}"
+
+    # puts "Enter your session key:"
+    # session_key = STDIN.gets.chomp
+    # puts
+
+    today = Date.today
+    puts "Fetching: day #{today.day}, #{today.year}"
+
+    content = Net::HTTP.get(URI("https://adventofcode.com/#{today.year}/day/#{today.day}"))
   end
 end
 
