@@ -1,6 +1,8 @@
 # Aoc
 Advent of Code toolkit to fetch inputs and submit answers efficiently.
 
+Work is still in progress
+
 ## Installation
 
     $ gem install aoc
