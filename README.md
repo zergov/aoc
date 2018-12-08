@@ -3,18 +3,6 @@ Advent of Code toolkit to fetch inputs and submit answers efficiently.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'aoc'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install aoc
 
 ## Usage
