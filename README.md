@@ -15,8 +15,13 @@ You can bootstrap an advent of code challenge by using:
 $ aoc bootstrap
 ```
 
-This will create a directory containing today's challenge instructions, input file and a solution.rb file where you can start coding
-your solution.
+This will create the following directory structure containing today's challenge instructions, input file and a solution.rb file where you can start coding your solution.
+```
+day8/
+├── README
+├── input.txt
+├── solution.rb
+```
 
 You can also bootstrap a challenge of an other day:
 ```
