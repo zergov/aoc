@@ -22,7 +22,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### bootstrap
+You can bootstrap an advent of code challenge by using:
+`$ aoc bootstrap`
+
+This will create a directory containing today's challenge instructions, input file and a solution.rb file where you can start coding
+your solution.
+
+You can also bootstrap a challenge of an other day:
+`$ aoc bootstrap 15 2017`
+
+This will create a directory for day 15 of year 2017.
+
+
+### fetch
+You can also just output the challenge instruction using fetch:
+`$ aoc fetch`
+
+This will print today's challenge instructions.
+
+You can also print the input of the challenge:
+`$ aoc fetch --input`
+
+Like bootstrap, you can also specifiy a challenge's day and year.
+`$ aoc fetch 5 2016`
 
 ## Development
 
