@@ -58,6 +58,12 @@ class CLI < Thor
       puts "Cannot find this challenge, make sure it exists."
     end
   end
+
+  desc "submit [answer] [day] [year]", "Submit an answer to a challenge."
+  def submit(answer, day = Date.today.day, year = Date.today.year)
+    challenge = Aoc::Challenge.new(day, year)
+    puts challenge.submit(answer)
+  end
 end
 
 CLI.start
