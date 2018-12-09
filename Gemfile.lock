@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aoc (0.1.0)
+    aoc (0.0.0)
       nokogiri (~> 1.6, >= 1.6.8)
       thor (~> 0.19.1)
 
