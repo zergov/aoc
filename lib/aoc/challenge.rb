@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'net/http'
+require 'http'
 require 'open-uri'
 
 module Aoc
@@ -32,32 +32,10 @@ module Aoc
     def submit(answer)
       unless completed?
         current_level = content.at('input[@name="level"]')["value"]
+        response = HTTP.cookies(session: Aoc::Session.get_session)
+          .post("#{url}/answer", form: {level: current_level, answer: answer})
 
-        uri = URI.parse("#{url}/answer")
-        http = Net::HTTP.new(uri.host, 80)
-
-        request = Net::HTTP::Post.new(uri.request_uri)
-        request["Cookie"] = "session=#{Aoc::Session.get_session}"
-        request.set_form_data({level: current_level, answer: answer})
-
-        response = http.request(request)
-
-        case response
-        when Net::HTTPSuccess then
-          response.body
-        when Net::HTTPMovedPermanently then
-          location = response['location']
-          warn "redirected to #{location}"
-
-          uri = URI.parse(location)
-          http = Net::HTTP.new(uri.host, 80)
-
-          request = Net::HTTP::Post.new(uri.request_uri)
-          request["Cookie"] = "session=#{Aoc::Session.get_session}"
-          http.request(request).body
-        else
-          response
-        end
+        puts Nokogiri::HTML(response.to_s).css('main').text
       else
         "This challenge is already completed!"
       end
