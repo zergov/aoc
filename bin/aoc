@@ -38,6 +38,12 @@ class CLI < Thor
     puts "Bootstrapping: day #{day}, #{year}"
 
     begin
+      challenge.input
+    rescue OpenURI::HTTPError
+      return puts "Cannot find the input for your challenge. Make sure your session key is valid."
+    end
+
+    begin
       dir = "day#{day}"
       readme = File.join(dir, "README")
       input = File.join(dir, "input.txt")
