@@ -5,6 +5,12 @@ require 'thor'
 require 'date'
 
 class CLI < Thor
+  map %w[--version -v] => :__print_version
+  desc "--version, -v", "print the version"
+  def __print_version
+    puts Aoc::VERSION
+  end
+
   desc "fetch [day] [year]", "fetch and display a challenge description. If no day and year, use today's date."
   method_option :input, :aliases => "-i", :type => :boolean, :default => false, :desc => "only show the input of the challenge."
   def fetch(day = Date.today.day, year = Date.today.year)
