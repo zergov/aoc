@@ -30,14 +30,14 @@ module Aoc
 
     def input
       session = Aoc::Session.get_session
-      @input ||= Nokogiri::HTML(open("#{url}/input", "Cookie" => "session=#{session}")).text
+      @input ||= Nokogiri::HTML(URI.open("#{url}/input", "Cookie" => "session=#{session}")).text
     end
 
     private
 
     def content
       session = Aoc::Session.get_session
-      @content ||= Nokogiri::HTML(open(url, "Cookie" => "session=#{session}"))
+      @content ||= Nokogiri::HTML(URI.open(url, "Cookie" => "session=#{session}"))
     end
   end
 end
